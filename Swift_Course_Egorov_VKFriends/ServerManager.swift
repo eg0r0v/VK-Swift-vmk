@@ -24,8 +24,8 @@ class ServerManager: NSObject {
         
         Alamofire.request(getFullURL("friends.get"), method: .get, parameters: parameters, encoding: URLEncoding.default)
             .responseJSON { response in
-                guard   let json = response.result.value as? [String: AnyObject],
-                        let dictsArray = json["response"] as? [[String: AnyObject]] else {
+                guard let json = response.result.value as? [String: AnyObject],
+					let dictsArray = json["response"] as? [[String: AnyObject]] else {
                     return completion(false, [])
                 }
                 
@@ -39,7 +39,7 @@ class ServerManager: NSObject {
         }
     }
     
-    static func getUserInfoFor(_ userID: NSNumber, completion: @escaping (_ success: Bool, _ user: User?) -> Void) {
+	static func getUserInfoFor(_ userID: NSNumber, completion: @escaping (_ success: Bool, _ user: User?, _ error: Error?) -> Void) {
         
         let parameters: [String: Any] = [
             "user_id": userID,
@@ -50,16 +50,17 @@ class ServerManager: NSObject {
  
         Alamofire.request(getFullURL("users.get"), method: .get, parameters: parameters, encoding: URLEncoding.default)
             .responseJSON { response in
+				let error = response.error
                 guard let json = response.result.value as? [String: AnyObject] else {
-                    return completion(false, nil)
+                    return completion(false, nil, error)
                 }
                 guard let dictsArray = json["response"] as? [[String: AnyObject]] else {
-                    return completion(false, nil)
+                    return completion(false, nil, error)
                 }
                 guard let userInfo = dictsArray.first else {
-                    return completion(false, nil)
+                    return completion(false, nil, error)
                 }
-                completion(true, User(userInfo))
+                completion(true, User(userInfo), error)
         }
     }
     

@@ -7,21 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0146E39F1DDD9A2E001C0298 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0146E39E1DDD9A2E001C0298 /* AppDelegate.swift */; };
-		0146E3A11DDD9A2E001C0298 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0146E3A01DDD9A2E001C0298 /* ViewController.swift */; };
-		0146E3A41DDD9A2E001C0298 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0146E3A21DDD9A2E001C0298 /* Main.storyboard */; };
-		0146E3A61DDD9A2E001C0298 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0146E3A51DDD9A2E001C0298 /* Assets.xcassets */; };
-		0146E3A91DDD9A2E001C0298 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0146E3A71DDD9A2E001C0298 /* LaunchScreen.storyboard */; };
+		0149ED9D20A496950017818A /* ChooseUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149ED9420A4958B0017818A /* ChooseUserViewController.swift */; };
+		0149ED9E20A496980017818A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149ED9120A4958B0017818A /* AppDelegate.swift */; };
+		0149ED9F20A4969A0017818A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0149ED9520A4958B0017818A /* Assets.xcassets */; };
+		0149EDA020A496A60017818A /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149ED9220A4958B0017818A /* FriendsTableViewController.swift */; };
+		0149EDA120A496A90017818A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0149ED9620A4958B0017818A /* Info.plist */; };
+		0149EDA220A496AB0017818A /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149ED9C20A4958B0017818A /* ServerManager.swift */; };
+		0149EDA320A496AE0017818A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149ED9020A4958B0017818A /* User.swift */; };
+		0149EDA420A496B00017818A /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149ED9320A4958B0017818A /* UserTableViewCell.swift */; };
+		0149EDA520A497340017818A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0149ED9820A4958B0017818A /* LaunchScreen.storyboard */; };
+		0149EDA620A497340017818A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0149ED9A20A4958B0017818A /* Main.storyboard */; };
+		3396AA8742891BD93FAD567A /* Pods_Swift_Course_Egorov_VKFriends.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 935BCCB51EF6992DC3699514 /* Pods_Swift_Course_Egorov_VKFriends.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0146E39B1DDD9A2E001C0298 /* Swift_Course_Egorov_VKFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift_Course_Egorov_VKFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0146E39E1DDD9A2E001C0298 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0146E3A01DDD9A2E001C0298 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0146E3A31DDD9A2E001C0298 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0146E3A51DDD9A2E001C0298 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0146E3A81DDD9A2E001C0298 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		0146E3AA1DDD9A2E001C0298 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0149ED9020A4958B0017818A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0149ED9120A4958B0017818A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0149ED9220A4958B0017818A /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
+		0149ED9320A4958B0017818A /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		0149ED9420A4958B0017818A /* ChooseUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseUserViewController.swift; sourceTree = "<group>"; };
+		0149ED9520A4958B0017818A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0149ED9620A4958B0017818A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0149ED9920A4958B0017818A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0149ED9B20A4958B0017818A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		0149ED9C20A4958B0017818A /* ServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
+		0A1B2E4E3AFBBAC021FDE3E7 /* Pods-Swift_Course_Egorov_VKFriends.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift_Course_Egorov_VKFriends.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swift_Course_Egorov_VKFriends/Pods-Swift_Course_Egorov_VKFriends.debug.xcconfig"; sourceTree = "<group>"; };
+		935BCCB51EF6992DC3699514 /* Pods_Swift_Course_Egorov_VKFriends.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swift_Course_Egorov_VKFriends.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A22FB0CCEDFA6DE668984FBB /* Pods-Swift_Course_Egorov_VKFriends.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swift_Course_Egorov_VKFriends.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swift_Course_Egorov_VKFriends/Pods-Swift_Course_Egorov_VKFriends.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3396AA8742891BD93FAD567A /* Pods_Swift_Course_Egorov_VKFriends.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +54,8 @@
 			children = (
 				0146E39D1DDD9A2E001C0298 /* Swift_Course_Egorov_VKFriends */,
 				0146E39C1DDD9A2E001C0298 /* Products */,
+				9624E91402F0D5AFE4CF5B18 /* Pods */,
+				96A4C6513AC38B0CC9670A12 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +70,43 @@
 		0146E39D1DDD9A2E001C0298 /* Swift_Course_Egorov_VKFriends */ = {
 			isa = PBXGroup;
 			children = (
-				0146E39E1DDD9A2E001C0298 /* AppDelegate.swift */,
-				0146E3A01DDD9A2E001C0298 /* ViewController.swift */,
-				0146E3A21DDD9A2E001C0298 /* Main.storyboard */,
-				0146E3A51DDD9A2E001C0298 /* Assets.xcassets */,
-				0146E3A71DDD9A2E001C0298 /* LaunchScreen.storyboard */,
-				0146E3AA1DDD9A2E001C0298 /* Info.plist */,
+				0149ED9120A4958B0017818A /* AppDelegate.swift */,
+				0149ED9520A4958B0017818A /* Assets.xcassets */,
+				0149ED9720A4958B0017818A /* Base.lproj */,
+				0149ED9420A4958B0017818A /* ChooseUserViewController.swift */,
+				0149ED9220A4958B0017818A /* FriendsTableViewController.swift */,
+				0149ED9620A4958B0017818A /* Info.plist */,
+				0149ED9C20A4958B0017818A /* ServerManager.swift */,
+				0149ED9020A4958B0017818A /* User.swift */,
+				0149ED9320A4958B0017818A /* UserTableViewCell.swift */,
 			);
 			path = Swift_Course_Egorov_VKFriends;
+			sourceTree = "<group>";
+		};
+		0149ED9720A4958B0017818A /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				0149ED9820A4958B0017818A /* LaunchScreen.storyboard */,
+				0149ED9A20A4958B0017818A /* Main.storyboard */,
+			);
+			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		9624E91402F0D5AFE4CF5B18 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0A1B2E4E3AFBBAC021FDE3E7 /* Pods-Swift_Course_Egorov_VKFriends.debug.xcconfig */,
+				A22FB0CCEDFA6DE668984FBB /* Pods-Swift_Course_Egorov_VKFriends.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		96A4C6513AC38B0CC9670A12 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				935BCCB51EF6992DC3699514 /* Pods_Swift_Course_Egorov_VKFriends.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +116,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0146E3AD1DDD9A2E001C0298 /* Build configuration list for PBXNativeTarget "Swift_Course_Egorov_VKFriends" */;
 			buildPhases = (
+				E8C7D1F4DE1F89770B8397A3 /* [CP] Check Pods Manifest.lock */,
 				0146E3971DDD9A2E001C0298 /* Sources */,
 				0146E3981DDD9A2E001C0298 /* Frameworks */,
 				0146E3991DDD9A2E001C0298 /* Resources */,
+				60A7F1078F54C19C87EAF41B /* [CP] Embed Pods Frameworks */,
+				732850630ED0B067936F27AC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,6 +144,7 @@
 				TargetAttributes = {
 					0146E39A1DDD9A2E001C0298 = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -123,41 +172,102 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0146E3A91DDD9A2E001C0298 /* LaunchScreen.storyboard in Resources */,
-				0146E3A61DDD9A2E001C0298 /* Assets.xcassets in Resources */,
-				0146E3A41DDD9A2E001C0298 /* Main.storyboard in Resources */,
+				0149EDA520A497340017818A /* LaunchScreen.storyboard in Resources */,
+				0149EDA620A497340017818A /* Main.storyboard in Resources */,
+				0149EDA120A496A90017818A /* Info.plist in Resources */,
+				0149ED9F20A4969A0017818A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		60A7F1078F54C19C87EAF41B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Swift_Course_Egorov_VKFriends/Pods-Swift_Course_Egorov_VKFriends-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swift_Course_Egorov_VKFriends/Pods-Swift_Course_Egorov_VKFriends-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		732850630ED0B067936F27AC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swift_Course_Egorov_VKFriends/Pods-Swift_Course_Egorov_VKFriends-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8C7D1F4DE1F89770B8397A3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Swift_Course_Egorov_VKFriends-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0146E3971DDD9A2E001C0298 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0146E3A11DDD9A2E001C0298 /* ViewController.swift in Sources */,
-				0146E39F1DDD9A2E001C0298 /* AppDelegate.swift in Sources */,
+				0149EDA220A496AB0017818A /* ServerManager.swift in Sources */,
+				0149ED9E20A496980017818A /* AppDelegate.swift in Sources */,
+				0149ED9D20A496950017818A /* ChooseUserViewController.swift in Sources */,
+				0149EDA320A496AE0017818A /* User.swift in Sources */,
+				0149EDA420A496B00017818A /* UserTableViewCell.swift in Sources */,
+				0149EDA020A496A60017818A /* FriendsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0146E3A21DDD9A2E001C0298 /* Main.storyboard */ = {
+		0149ED9820A4958B0017818A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				0146E3A31DDD9A2E001C0298 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		0146E3A71DDD9A2E001C0298 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0146E3A81DDD9A2E001C0298 /* Base */,
+				0149ED9920A4958B0017818A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		0149ED9A20A4958B0017818A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0149ED9B20A4958B0017818A /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -208,7 +318,9 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -250,7 +362,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -258,25 +372,34 @@
 		};
 		0146E3AE1DDD9A2E001C0298 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A1B2E4E3AFBBAC021FDE3E7 /* Pods-Swift_Course_Egorov_VKFriends.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Swift_Course_Egorov_VKFriends/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Ilya-Egorov.Swift-Course-Egorov-VKFriends";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		0146E3AF1DDD9A2E001C0298 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A22FB0CCEDFA6DE668984FBB /* Pods-Swift_Course_Egorov_VKFriends.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Swift_Course_Egorov_VKFriends/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Ilya-Egorov.Swift-Course-Egorov-VKFriends";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -299,6 +422,7 @@
 				0146E3AF1DDD9A2E001C0298 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

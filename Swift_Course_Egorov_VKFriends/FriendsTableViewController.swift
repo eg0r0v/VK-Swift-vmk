@@ -20,9 +20,10 @@ class FriendsTableViewController: UITableViewController, ChooseUserDelegate {
     fileprivate var allDownloaded = false
     
     override func viewDidLoad() {
-
+		super.viewDidLoad()
+		
         let refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(FriendsTableViewController.refresh), for: UIControlEvents.valueChanged)
+        refresh.addTarget(self, action: #selector(FriendsTableViewController.refresh), for: .valueChanged)
         tableView.refreshControl = refresh
         
         if let user = currentUser {
@@ -37,7 +38,7 @@ class FriendsTableViewController: UITableViewController, ChooseUserDelegate {
         }
     }
     
-    func refresh() {
+    @objc func refresh() {
         friends.removeAll()
         getFriends()
     }
@@ -45,34 +46,33 @@ class FriendsTableViewController: UITableViewController, ChooseUserDelegate {
     // MARK: ChooseUserDelegate
     
     func didChooseID(_ userId: NSNumber) {
-        ServerManager.getUserInfoFor(userId, completion: { [weak self] (success, user) in
-            if let user = user {
-                guard let strongSelf = self else {
-                    return
-                }
-                strongSelf.currentUser = user
-                strongSelf.navigationItem.title = user.fullName
-                strongSelf.getFriends()
-            }
-            })
+        ServerManager.getUserInfoFor(userId, completion: { [weak self] (success, user, error) in
+			if let error = error {
+				let alert = UIAlertController(title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert)
+				self?.present(alert, animated: true, completion: nil)
+				return
+			}
+			guard let user = user else {
+				return
+			}
+			self?.currentUser = user
+			self?.navigationItem.title = user.fullName
+			self?.getFriends()
+		})
     }
     
     // MARK: Функции получения данных
     
     func getFriends() {
-        if let user = currentUser, let userId = user.userId {
-            ServerManager.getFriendsFor(userId, offset: friends.count, count: friendsInRequest, completion: {[weak self] (success, newFriends) in
-                guard let strongSelf = self else {
-                    return
-                }
-                strongSelf.allDownloaded = newFriends.count < strongSelf.friendsInRequest
-                strongSelf.friends.append(contentsOf: newFriends)
-                strongSelf.tableView.reloadData()
-                if let refresh = strongSelf.tableView.refreshControl {
-                    refresh.endRefreshing()
-                }
-            })
-        }
+		guard let user = currentUser, let userId = user.userId else { return }
+		ServerManager.getFriendsFor(userId, offset: friends.count, count: friendsInRequest, completion: {[weak self] (success, newFriends) in
+			self?.allDownloaded = newFriends.count < (self?.friendsInRequest ?? 0)
+			self?.friends.append(contentsOf: newFriends)
+			self?.tableView.reloadData()
+			if let refresh = self?.tableView.refreshControl {
+				refresh.endRefreshing()
+			}
+		})
     }
 
     // MARK: - Table view data source
@@ -82,35 +82,31 @@ class FriendsTableViewController: UITableViewController, ChooseUserDelegate {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath)
+		
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
 
-        if let userCell = cell as? UserTableViewCell {
-
-            guard indexPath.row < friends.count else {
-                tableView.reloadData()
-                return cell
-            }
-            let user = friends[indexPath.row]
-            
-            userCell.userNameLabel.text = user.fullName
-            
-            if let imagePath = user.avatarImageURLString {
-                if userCell.imagePath != imagePath {
-                    userCell.avatarImageView.image = nil
-                    userCell.imagePath = imagePath
-                    Alamofire.request(imagePath).responseImage { response in
-                        guard let image = response.result.value else {
-                            return
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
-                            if imagePath == userCell.imagePath {
-                                userCell.avatarImageView.image = image.af_imageRounded(withCornerRadius: 4)
-                            }
-                        }
-                    }
-                }
-            }
-        }
+		guard indexPath.row < friends.count else {
+			tableView.reloadData()
+			return cell
+		}
+		
+		let user = friends[indexPath.row]
+		
+		cell.userNameLabel.text = user.fullName
+		
+		guard let imagePath = user.avatarImageURLString, cell.imagePath != imagePath else { return cell }
+		cell.avatarImageView.image = nil
+		cell.imagePath = imagePath
+		Alamofire.request(imagePath).responseImage { response in
+			guard let image = response.result.value else {
+				return
+			}
+			DispatchQueue.main.asyncAfter(deadline: .now()) {
+				if imagePath == cell.imagePath {
+					cell.avatarImageView.image = image.af_imageRounded(withCornerRadius: 4)
+				}
+			}
+		}
         return cell
     }
     

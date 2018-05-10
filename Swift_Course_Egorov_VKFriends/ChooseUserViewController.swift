@@ -17,6 +17,14 @@ class ChooseUserViewController: UIViewController {
     let key = "kPreviousUserId"
     
     @IBOutlet weak var userIDTextField: UITextField!
+	weak var delegate: ChooseUserDelegate?
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		if let value = UserDefaults.standard.value(forKey: key) as? String {
+			userIDTextField.text = value
+		}
+	}
     
     @IBAction func didChooseID(_ sender: UIButton) {
         guard let text = userIDTextField.text else {
@@ -27,18 +35,10 @@ class ChooseUserViewController: UIViewController {
                 delegate.didChooseID(NSNumber(value:userId))
             }
             UserDefaults.standard.set(text, forKey: key)
-            self.dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Ошибка", message: "Введите цифры!", preferredStyle: .actionSheet)
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
-    
-    weak var delegate: ChooseUserDelegate?
-    
-    override func viewDidLoad() {
-        if let value = UserDefaults.standard.value(forKey: key) as? String {
-            userIDTextField.text = value
+            present(alert, animated: true, completion: nil)
         }
     }
 }

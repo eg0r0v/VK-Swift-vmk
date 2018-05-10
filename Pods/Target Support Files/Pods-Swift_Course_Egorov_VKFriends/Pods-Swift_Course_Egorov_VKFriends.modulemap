@@ -1,0 +1,6 @@
+framework module Pods_Swift_Course_Egorov_VKFriends {
+  umbrella header "Pods-Swift_Course_Egorov_VKFriends-umbrella.h"
+
+  export *
+  module * { export * }
+}
