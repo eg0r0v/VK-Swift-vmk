@@ -7,89 +7,126 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
-class FriendsTableViewController: UITableViewController {
+class FriendsTableViewController: UITableViewController, ChooseUserDelegate {
 
+    fileprivate let friendsInRequest = 20
+    fileprivate var friends: [User] = []
+    
+    var currentUser: User?
+    
+    fileprivate var allDownloaded = false
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(FriendsTableViewController.refresh), for: UIControlEvents.valueChanged)
+        tableView.refreshControl = refresh
+        
+        if let user = currentUser {
+            navigationItem.title = user.fullName
+            getFriends()
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            if let vc = storyboard.instantiateViewController(withIdentifier: "ChooseUserViewController") as? ChooseUserViewController {
+                vc.delegate = self
+                navigationController?.present(vc, animated: true, completion: nil)
+            }
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func refresh() {
+        friends.removeAll()
+        getFriends()
+    }
+    
+    // MARK: ChooseUserDelegate
+    
+    func didChooseID(_ userId: NSNumber) {
+        ServerManager.getUserInfoFor(userId, completion: { [weak self] (success, user) in
+            if let user = user {
+                guard let strongSelf = self else {
+                    return
+                }
+                strongSelf.currentUser = user
+                strongSelf.navigationItem.title = user.fullName
+                strongSelf.getFriends()
+            }
+            })
+    }
+    
+    // MARK: Функции получения данных
+    
+    func getFriends() {
+        if let user = currentUser, let userId = user.userId {
+            ServerManager.getFriendsFor(userId, offset: friends.count, count: friendsInRequest, completion: {[weak self] (success, newFriends) in
+                guard let strongSelf = self else {
+                    return
+                }
+                strongSelf.allDownloaded = newFriends.count < strongSelf.friendsInRequest
+                strongSelf.friends.append(contentsOf: newFriends)
+                strongSelf.tableView.reloadData()
+                if let refresh = strongSelf.tableView.refreshControl {
+                    refresh.endRefreshing()
+                }
+            })
+        }
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return friends.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath)
 
-        // Configure the cell...
+        if let userCell = cell as? UserTableViewCell {
 
+            guard indexPath.row < friends.count else {
+                tableView.reloadData()
+                return cell
+            }
+            let user = friends[indexPath.row]
+            
+            userCell.userNameLabel.text = user.fullName
+            
+            if let imagePath = user.avatarImageURLString {
+                if userCell.imagePath != imagePath {
+                    userCell.avatarImageView.image = nil
+                    userCell.imagePath = imagePath
+                    Alamofire.request(imagePath).responseImage { response in
+                        guard let image = response.result.value else {
+                            return
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
+                            if imagePath == userCell.imagePath {
+                                userCell.avatarImageView.image = image.af_imageRounded(withCornerRadius: 4)
+                            }
+                        }
+                    }
+                }
+            }
+        }
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == friends.count - 1 && !allDownloaded {
+            getFriends()
+        }
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "FriendsTableViewController") as? FriendsTableViewController {
+            let user = friends[indexPath.row];
+            vc.currentUser = user
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
